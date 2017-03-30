@@ -12,6 +12,7 @@
         <module>HelloWorld_akka</module>
         <module>HelloWorld_java8</module>
         <module>HelloWorld_java_springboot</module>
+        <module>HelloWorld_java_DesignPatterns</module>
     </modules>
 
 
