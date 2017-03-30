@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<!--/*@thymesVar id="login" type="com.wangc.Login"*/-->
+<form th:action="@{/test/login}" th:method="post" th:object="${login}">
+    <input type="text" name="username"/>
+    <input type="text" name="password"/>
+    <input type="submit" id="submit" name="submit"/>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>Title</title>
+    
+</head>
+<body>
+
+<!--/*@thymesVar id="person" type="com.wangc.Person"*/-->
+<!--/*@thymesVar id="single" type="com.wangc.Person"*/-->
+
+<div>singlePerson.name <span th:text="${single.name}"></span></div>
+
+<div th:if="${not #lists.isEmpty(people)}">
+    <li th:each="person:${people}">
+        <span th:text="${person.name}"></span>
+        <span th:text="${person.age}"></span>
+        <button th:id="ss" th:text="sss" th:onclick="'getName(\''+${person.name}+'\');'"></button>
+    </li>
+</div>
+
+<script th:src="@{jquery-3.1.1.min.js}"></script>
+<script th:inline="javascript">
+    
+    $("#ss").click(function(){
+        alert(11);
+    });
+    
+    var single = [[${single}]];
+    console.log(single.name +' - '+single.age);
+    
+    function getName(name){
+        alert(name);
+    }
+</script>
+
+</body>
+</html>
