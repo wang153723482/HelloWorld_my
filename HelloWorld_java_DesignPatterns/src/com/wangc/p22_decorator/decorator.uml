@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.wangc.p22_decorator.test1.Component</OriginalElement>
+  <nodes>
+    <node x="177.5" y="111.0">com.wangc.p22_decorator.test1.Decorator</node>
+    <node x="289.0" y="276.0">com.wangc.p22_decorator.test1.DecoratorB</node>
+    <node x="0.0" y="276.0">com.wangc.p22_decorator.test1.DecoratorA</node>
+    <node x="399.5" y="138.0">com.wangc.p22_decorator.test1.ConcreteComponent</node>
+    <node x="280.0" y="0.0">com.wangc.p22_decorator.test1.Component</node>
+    <node x="0.0" y="409.0">com.wangc.p22_decorator.test1.DBdate</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.wangc.p22_decorator.test1.Decorator" target="com.wangc.p22_decorator.test1.Component">
+      <point x="0.0" y="-57.5" />
+      <point x="278.5" y="86.0" />
+      <point x="339.0" y="86.0" />
+      <point x="-59.0" y="30.5" />
+    </edge>
+    <edge source="com.wangc.p22_decorator.test1.DecoratorB" target="com.wangc.p22_decorator.test1.Decorator">
+      <point x="0.0" y="-44.0" />
+      <point x="422.5" y="251.0" />
+      <point x="329.0" y="251.0" />
+      <point x="50.5" y="57.5" />
+    </edge>
+    <edge source="com.wangc.p22_decorator.test1.DecoratorA" target="com.wangc.p22_decorator.test1.Decorator">
+      <point x="0.0" y="-44.0" />
+      <point x="134.5" y="251.0" />
+      <point x="228.0" y="251.0" />
+      <point x="-50.5" y="57.5" />
+    </edge>
+    <edge source="com.wangc.p22_decorator.test1.ConcreteComponent" target="com.wangc.p22_decorator.test1.Component">
+      <point x="0.0" y="-30.5" />
+      <point x="517.5" y="86.0" />
+      <point x="457.0" y="86.0" />
+      <point x="59.0" y="30.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="318.0" y="235.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Constructors</Category>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
