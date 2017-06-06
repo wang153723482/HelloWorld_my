@@ -13,4 +13,10 @@ class Yiibai(xc: Int, yc: Int) {
     println ("Yiibai x location : " + x);
     println ("Yiibai y location : " + y);
   }
+  
+  def clac(n:Int) = {
+    var r = 1
+    r = r + n
+    r
+  }
 }
