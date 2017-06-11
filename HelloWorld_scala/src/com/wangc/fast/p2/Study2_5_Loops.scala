@@ -49,6 +49,10 @@ object Study2_5_Loops {
     for (i <- 1 until 20 if i%5==0){
       println(i)
     }
+    
+    for(c<-"hello"){
+      println(c)
+    }
   }
   
 }
