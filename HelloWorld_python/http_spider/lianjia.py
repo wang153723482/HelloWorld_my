@@ -13,7 +13,9 @@ url1 = 'https://bj.lianjia.com/ershoufang/'
 url2 = 'co21ng1hu1nb1l2p1/'
 url = url1 + url2
 
-key_words = [u'南口', u'良乡', u'密云', u'城关', u'韩村河', u'昌平其它', u'首都机场']
+key_words = [u'南口', u'良乡', u'密云', u'城关', u'韩村河', u'昌平其它', u'首都机场',u'果园',u'西关环岛']
+
+blacklist = ['https://bj.lianjia.com/ershoufang/101102309958.html']
 
 page_data = []
 
@@ -55,9 +57,9 @@ def check(d):
 
 def send_mail(subject, msg):
     # 第三方 SMTP 服务
-    mail_host = "mail.xxx.com" 
+    mail_host = "mail.xxx.com"
     mail_user = "xxxx"
-    mail_pass = "123" 
+    mail_pass = "123"
 
     sender = 'abc@xxxx.com'
     receivers = ['abc@xxx.com']  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
@@ -78,6 +80,15 @@ def send_mail(subject, msg):
     except smtplib.SMTPException:
         print u"Error: 无法发送邮件"
 
+# 从csv中读取所有的数据，如果包含当前的url，则返回空白字符串，否则返回'new'，并写入文件
+def check_new(url):
+    with open(r'result.csv','a+') as lines:
+        for line in lines:
+            if line.find(url) > -1:
+                return ''
+        lines.write(url+'\n')
+    return 'new \n'
+    pass
 
 def do_url(url):
     request = urllib2.Request(url, headers=headers)
@@ -93,7 +104,9 @@ def do_url(url):
     for li in lis.items():
         positionInfo = li('.positionInfo')
         if not check(positionInfo.html()):
-            my_hours.append(li.find('a').attr('href') + '\n' + li.text())
+            h_url = li.find('a').attr('href')
+            if not h_url in blacklist:
+                my_hours.append(check_new(h_url)+h_url + '\n' + li.text())
             pass
     return pq_obj
 
@@ -130,6 +143,6 @@ if __name__ == '__main__':
     msg = ''
     for h in my_hours:
         msg += (h + '\n' + '\n')
-    send_mail(sub, msg)
+    # send_mail(sub, msg)
     print sub
     print msg
