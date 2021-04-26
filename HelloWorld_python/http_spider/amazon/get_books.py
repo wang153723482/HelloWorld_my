@@ -1,4 +1,5 @@
 # encoding=utf8
+# -*- coding: utf-8 -*-
 import requests
 from pyquery import PyQuery as pq
 
@@ -29,44 +30,45 @@ headers = {'Host': 'www.amazon.cn',
 
 # 获取分类
 def get_classification():
-    requests.DEFAULT_RETRIES = 2  # 增加重试连接次数
-    s = requests.session()
-    s.keep_alive = False  # 关闭多余连接
+    # requests.DEFAULT_RETRIES = 2  # 增加重试连接次数
+    # s = requests.session()
+    # s.keep_alive = False  # 关闭多余连接
     url = 'https://www.amazon.cn/Kindle%E7%94%B5%E5%AD%90%E4%B9%A6/b?ie=UTF8&node=116169071&ref_=nav_topnav_giftcert'
-    s.get(url)  # 你需要的网址
-    response = s.get(url, headers=headers)
+    # s.get(url)  # 你需要的网址
+    response = requests.get(url, headers=headers)
+    print(response.text)
     resp_obj = pq(response.text)
-    classification_xpath = '//*[@id="s-refinements"]/div'
     divs = resp_obj('#s-refinements').children('div')
-    # for div in divs:
-    #     print('=================')
-    #     print(div)
-    print()
+    print(divs)
+    if 1==1:
+        return
     cf_ul = pq(divs[2]).find('ul li')
     i = 0
+    file_classfication = open('cfc.csv', 'wb')
     for ul in cf_ul:
         i = i + 1
 
         if i < 3:
             continue
-
-        # if i == 6:
-        #     break  # debug
-
-        # print(pq(ul).html())
         print('==============')
-        print(pq(ul).find('a').attr('href'))
-        print(pq(ul).text())
-        print(s[56:65])  #分类ID，拼到url中 https://www.amazon.cn/s?rh=n%3A{}&fs=true&ref=lp_{}_sar 请求这个的时候记得refer_url为下面那个长链接
+        ss = pq(ul).find('a').attr('href')
+        c_name = pq(ul).text()
+        # 分类ID，拼到url中 https://www.amazon.cn/s?rh=n%3A{}&fs=true&ref=lp_{}_sar 请求这个的时候记得refer_url为下面那个长链接
+        c_id = ss[56:65]
+        c_url = 'https://www.amazon.cn/s?rh=n%3A{}&fs=true&ref=lp_{}_sar'.format(c_id, c_id)
+        # file_classfication.write(c_id + ',' + c_name + ',' + c_url + '\n\r')
+        print(c_id + ',' + c_name + ',' + c_url)
 
 def main():
     get_classification()
+    # a = '123'
+    # print ("This website name is %s %s" % (a,a))
+
     pass
 
 
 if __name__ == '__main__':
     main()
-
 
 '''
 这是该分类下全部书籍的链接，替换这里的 144154071 即可。上面抓到的链接中，只有这个数字不同，其他都是相同的值
