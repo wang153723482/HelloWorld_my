@@ -8,7 +8,12 @@ aa = 'a..a.a.aa.tx.t'
 print aa.rfind('.')
 print aa[aa.rfind('.'):] #获取文件扩展名
 
-
+print aa.index('tx')
+if aa.find('tx')>-1:
+    print 1
+else:
+    print 2
+print 22222222
 
 a = 'a'
 if a :

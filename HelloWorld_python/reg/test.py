@@ -1,6 +1,7 @@
 #encoding=utf8
 import re
 
+
 #正则替换
 #1正则，2新的字符串，3需要进行替换的字符串
 s = 'sdf34df3k3k3k'
@@ -41,3 +42,23 @@ if match:
 
     ### 输出 ###
     # hello
+
+import random
+
+s = random.randint(1, 5400)
+print s
+
+import time
+
+# time.sleep(3)
+
+import requests
+
+# s  = requests.get('http://192.168.103.72:8080')
+# print s.status_code
+# print s.content
+
+import urllib2
+
+s = urllib2.urlopen('http://192.168.103.72:8080')
+print s.read()

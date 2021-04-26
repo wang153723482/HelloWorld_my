@@ -9,9 +9,9 @@ cu = cx.cursor()
 # cu.execute("create table catalog (id integer primary key,pid integer,name varchar(10) UNIQUE,nickname text '')")
 
 
-# for t in[(0,10,'abc','Yu'),(1,20,'cba','Xu')]:
-#     cx.execute("insert into catalog values (?,?,?,?)", t)
-# cx.commit()
+for t in[(0,10,'abc','Yu'),(1,20,'cba','Xu')]:
+    cx.execute("insert into catalog values (?,?,?,?)", t)
+cx.commit()
 
 for t in [(100,0),(200,1)]:
     cx.execute('update catalog set pid=? where id =?',t)

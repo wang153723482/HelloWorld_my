@@ -1,6 +1,14 @@
 # encoding=utf8
 import datetime
 import time
+import random
+
+
+print(random.randint(0,9))
+
+
+#休眠3秒
+time.sleep(3)
 
 t = 12
 t = 1 - 12860

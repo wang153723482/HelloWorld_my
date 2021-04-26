@@ -18,12 +18,21 @@ print note_store.getSyncState()
 
 note = note_store.getNote(dev_token, 'e36cf272-1fa8-4aad-a608-f71f2bab3a04', True, True, True, True)
 print note.title
-print  note.updated
-print  note.content
+print '======================'
+# print note.updated
+print '======================'
+# print note.content
+print '======================'
+ress = note.resources
+for res in ress:
+    print '-----'
+    print str(res).decode('utf-8')
+
+    pass
 
 # 列出第一个笔记本中的所有笔记的标题
 notebookGuid = note_store.listNotebooks()[0]
 f = note_store.NoteFilter
 f.notebookGuid = notebookGuid
-for note in note_store.findNotes(dev_token, f, 0, 2).notes:
-    print(note.title)
+# for note in note_store.findNotes(dev_token, f, 0, 2).notes:
+#     print(note.title)

@@ -6,13 +6,17 @@ import time
 def is_valid_date(s):
     try:
         time.strptime(s, '%Y-%m-%d %H:%M:%S')
+        if s.startswith('2020'):
+            return True
+        else: 
+            return False
         return True
     except:
         return False
 
 
 def main():
-    file = open('data.txt')
+    file = open('data2020.txt',encoding='utf8')
     d = dict()
     for line in file:
         if '' == line:
@@ -29,8 +33,8 @@ def main():
 
    
 
-    result_file = open('result_file.txt', 'a')
-    print d 
+    result_file = open('result_file.txt', 'a',encoding='utf8')
+    print(d) 
     for dd in d:
         result_file.write(str(dd[1])+' '+dd[0])
     result_file.close()
